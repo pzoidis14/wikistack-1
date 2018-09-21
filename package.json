@@ -1,0 +1,22 @@
+{
+  "name": "wikistack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./wikistack/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cli217/wikistack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cli217/wikistack/issues"
+  },
+  "homepage": "https://github.com/cli217/wikistack#readme",
+  "dependencies": {
+    "html-template-tag": "^2.0.0"
+  }
+}
