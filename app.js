@@ -1,7 +1,9 @@
 const morgan = require ('morgan');
 const express = require ('express');
-const {db} = require('./models');
-const Sequalize = require('sequelize');
+const models = require('./models');
+const Sequelize = require('sequelize');
+const wikiRoutes = require('./routes/wiki')
+const userRoutes = require('./routes/user')
 
 const app = express();
 
@@ -11,23 +13,18 @@ app.use(express.static(__dirname + "/stylesheets"));
 app.use("/wiki", require("./routes/wiki"));
 app.use("/user", require("./routes/user"));
 
-app.get('/', (req, res) => {
-    const empty = '12345';
-    res.send(empty);
-})
+
+
+app.use("/wiki", wikiRoutes);
 
 app.get('/', (req, res) => {
-    const empty = '12345';
-    res.send(empty);
-})
-
-app.get('/', (req, res) => {
-    const empty = '12345';
-    res.send(empty);
+    res.redirect("/wiki");
 })
 
 const init = async() => {
-    await db.sync();
+    await models.Page.sync();
+    await models.User.sync();
+
     const PORT = 3000;
     app.listen(PORT, () => {
         console.log(`App listening in port ${PORT}`);
